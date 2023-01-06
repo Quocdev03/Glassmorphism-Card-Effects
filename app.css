@@ -1,0 +1,224 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+body {
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: black;
+    /* background-color: #1d061a; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+
+.boxed {
+    position: relative;
+    width: 320px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    margin: 30px 40px;
+    transition: .5s;
+}
+
+.boxed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    border-radius: 8px;
+    transform: skewX(15deg);
+    transition: .5s;
+}
+
+.boxed::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+    border-radius: 8px;
+    transform: skewX(15deg);
+    transition: .5s;
+    filter: blur(30px);
+    transition: .5s;
+}
+
+.boxed:hover:before,
+.boxed:hover:after {
+    transform: skewX(0deg);
+    left: 20px;
+    width: calc(100% - 90px);
+}
+
+.boxed:nth-child(1):before,
+.boxed:nth-child(1):after {
+    background-image: linear-gradient(315deg, #ffbc00, #ff0058);
+}
+
+.boxed:nth-child(2):before,
+.boxed:nth-child(2):after {
+    background-image: linear-gradient(315deg, #03a9f4, #ff0058);
+}
+
+.boxed:nth-child(3):before,
+.boxed:nth-child(3):after {
+    background-image: linear-gradient(315deg, #4dff03, #00d0ff);
+}
+
+.boxed span {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.boxed span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: .5s;
+    animation: animate 2s ease-in-out infinite;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.boxed:hover span::before {
+    top: -50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    transition: .5s;
+}
+
+.boxed span::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: .5s;
+    animation: animate 2s ease-in-out infinite;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    animation-delay: -1s;
+}
+
+.boxed:hover span::after {
+    bottom: -50px;
+    right: 50px;
+    width: 100px;
+    height: 100px;
+    opacity: 1;
+    transition: .5s;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    left: 0;
+    padding: 20px 40px;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    transition: .5s;
+    color: white;
+}
+
+.container .boxed:hover .content {
+    transform: translateX(-25px);
+    padding: 60px 50px;
+    transition: .5s;
+}
+
+.content-title {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.content-desc {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    line-height: 1.4rem;
+}
+
+.content-link {
+    display: inline-block;
+    font-size: 1.1rem;
+    color: #111;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: .5s;
+}
+
+.content-link:hover {
+    box-shadow: 0 0 7px 1px rgba(0, 0, 0, .3);
+    color: #fff;
+}
+
+@keyframes animate {
+
+    0%,
+    100% {
+        transform: translateY(10px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
